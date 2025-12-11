@@ -11,7 +11,7 @@ from config import DevelopmentConfig, ProductionConfig
 
 
 db = SQLAlchemy()
-csrf = CSRFProtect() # Part D : CSRF Protection
+csrf = CSRFProtect() #  CSRF Protection
 
 
 
@@ -19,7 +19,7 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
 
-    # Part I : enviroment specific behaviour
+    # Enviroment specific behaviour
     env = os.environ.get("FLASK_ENV", "development")
     if env == "development":
         app.config.from_object("config.DevelopmentConfig")
@@ -34,7 +34,7 @@ def create_app():
     from .routes import main
     app.register_blueprint(main)
 
-    # Part E: Security headers applied to every response
+    # Security headers applied to every response
     @app.after_request
     def apply_security_headers(response):
         response.headers["X-Content-Type-Options"] = "nosniff"
@@ -58,7 +58,7 @@ def create_app():
         )
         return response
 
-    # Part H: logging and monitoring
+    # Logging and monitoring
     configure_logging(app)
     register_error_handlers(app)
 
@@ -92,7 +92,7 @@ def create_app():
 
 
 def configure_logging(app: Flask):
-    # Part H: rotating file-based logging
+    # Rotating file-based logging
     log_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "logs")
     os.makedirs(log_dir, exist_ok=True)
 
@@ -115,7 +115,7 @@ def configure_logging(app: Flask):
 
 
 def register_error_handlers(app: Flask):
-    # Part I: custom error pages with same styling, no debug info
+    # Custom error pages with same styling, no debug info
 
     @app.errorhandler(400)
     def bad_request(e):

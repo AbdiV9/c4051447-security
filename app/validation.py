@@ -1,5 +1,4 @@
-import re
-from email_validator import EmailNotValidError, validate_email
+
 import bleach
 
 # Whitelist for HTML

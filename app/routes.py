@@ -24,7 +24,7 @@ main = Blueprint('main', __name__)
 logger = logging.getLogger(__name__)
 
 
-# Part F: centralized authorization helpers
+# Centralized authorization helpers
 def require_login():
     if "user" not in session:
         logger.warning("Access control: unauthenticated access to %s", request.path)
@@ -64,22 +64,22 @@ def home():
 def login():
     if request.method == 'POST':
         try:
-            # Part A: Validate email/username and password format
+            # Validate email/username and password format
             username = validate_username(request.form.get('username'))
             password = validate_string(request.form.get('password'), "Password", min_len=10, max_len=128)
         except ValueError as e:
             flash(str(e), 'error')
             return render_template('login.html'), 400
 
-        # Part C:  ORM lookup replaces unsafe SQL select
+        # ORM lookup replaces unsafe SQL select
         user = User.query.filter_by(username=username).first()
 
         if user and user.check_password(password):
 
-            # Part B: Renew session to prevent session fixation
+            #  Renew session to prevent session fixation
             session.clear()
 
-            # Part B: Store minimal authenticated info
+            #  Store minimal authenticated info
             session['user'] = user.username
             session['role'] = user.role
             session['bio'] = user.bio
@@ -120,7 +120,7 @@ def dashboard():
 def register():
     if request.method == 'POST':
         try:
-            # Part A: validate all input fields
+            # Validate all input fields
             username = validate_username(request.form.get('username'))
             password = validate_string(request.form.get('password'), "Password", min_len=10, max_len=128)
             role = validate_role(request.form.get('role', 'user'))
@@ -129,13 +129,13 @@ def register():
             flash(str(e), 'error')
             return render_template('register.html'), 400
 
-        # Part A: reject duplicate accounts
+        #  Reject duplicate accounts
         if User.query.filter_by(username=username).first():
             flash('An account with that email already exists.', 'error')
 
 
-        # Part B: password is hashed inside the User model constructor
-        # Part C :ORM insert replaces unsafe SQL
+        # Password is hashed inside the User model constructor
+        # ORM insert replaces unsafe SQL
         new_user = User(username=username,password=password, role=role,bio=bio)
         db.session.add(new_user)
         db.session.commit()
@@ -172,28 +172,28 @@ def moderator():
 
 @main.route('/user-dashboard')
 def user_dashboard():
-    require_role('user')# Part F Protecting sensitive route
+    require_role('user')# Protecting sensitive route
     return render_template('user_dashboard.html', username=session.get('user'))
 
 
 @main.route('/change-password', methods=['GET', 'POST'])
 def change_password():
-    require_login() # Part F Protecting sensitive route
-    # Part C : ORM fetch instead of unsafe SQL
+    require_login() # rotecting sensitive route
+     # ORM fetch instead of unsafe SQL
     user = User.query.filter_by(username=session['user']).first()
     if not user:
         abort(403)
 
     if request.method == 'POST':
         try:
-            # Part A: validate string lengths
+            # Validate string lengths
             current_password = validate_string(request.form.get('current_password'), "Current password", min_len=1, max_len=128)
             new_password = validate_string(request.form.get('new_password'), "New password", min_len=10, max_len=128)
         except ValueError as e:
             flash(str(e), 'error')
             return render_template('change_password.html'), 400
 
-        # Part B: verify current password using hashing
+        # Verify current password using hashing
         if not user.check_password(current_password):
             flash('Current password is incorrect', 'error')
             return render_template('change_password.html')
@@ -202,8 +202,8 @@ def change_password():
             flash('New password must be different from the current password', 'error')
             return render_template('change_password.html')
 
-        # Part B: securely update password (hashed)
-        # Part G : Hash and Pepper
+        # Securely update password (hashed)
+        # Hash and Pepper
         user.set_password(new_password)
         db.session.commit()
 

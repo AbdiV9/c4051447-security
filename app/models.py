@@ -8,20 +8,20 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
 
-    # Part G: hashed (peppered) password
+    # hashed (peppered) password
     password = db.Column(db.String(255), nullable=False)
 
     role = db.Column(db.String(50), default="user", nullable=False)
 
-    # Part G: encrypted biography stored in DB
+    # Encrypted biography stored in DB
     _bio = db.Column("bio", db.Text, nullable=False)
 
-    # Part G: Fernet helper
+    # Fernet helper
     def _get_fernet(self) -> Fernet:
         key = current_app.config["BIO_ENC_KEY"].encode()
         return Fernet(key)
 
-    # Part G: decrypted bio property
+    # Decrypted bio property
     @property
     def bio(self) -> str:
         if not self._bio:
@@ -29,7 +29,7 @@ class User(db.Model):
         f = self._get_fernet()
         return f.decrypt(self._bio.encode()).decode("utf-8")
 
-    # Part G: encrypt bio before storing
+    # Encrypt bio before storing
     @bio.setter
     def bio(self, value: str) -> None:
         plaintext = (value or "").encode("utf-8")
@@ -37,16 +37,16 @@ class User(db.Model):
         token = f.encrypt(plaintext).decode("utf-8")
         self._bio = token
 
-    # Part G: password pepper
+    # Password pepper
     def _pepper(self, password: str) -> str:
         pepper = current_app.config.get("PASSWORD_PEPPER", "")
         return f"{password}{pepper}"
 
-    # Part G: set password with hash + pepper
+    # Set password with hash + pepper
     def set_password(self, new_password: str) -> None:
         self.password = generate_password_hash(self._pepper(new_password))
 
-    # Part G: check password with hash + pepper
+    # Check password with hash + pepper
     def check_password(self, password: str) -> bool:
         return check_password_hash(self.password, self._pepper(password))
 
