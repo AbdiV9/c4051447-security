@@ -1,0 +1,30 @@
+2025-12-10 21:01:35,606 [WARNING] app - 404 Not Found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-12-10 21:01:58,920 [WARNING] app.routes - Access control: unauthenticated access to /dashboard
+2025-12-10 21:01:58,920 [WARNING] app - 403 Forbidden: 403 Forbidden: You don't have the permission to access the requested resource. It is either read-protected or not readable by the server.
+2025-12-10 21:02:06,282 [WARNING] app - 404 Not Found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-12-10 21:02:19,207 [WARNING] app - 404 Not Found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-12-10 21:02:40,731 [WARNING] app.routes - Authentication failure for user user1@gmail.com from 127.0.0.1
+2025-12-10 21:02:40,755 [WARNING] app - 404 Not Found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-12-10 21:02:43,608 [WARNING] app - 404 Not Found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-12-10 21:02:47,876 [WARNING] app - 404 Not Found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-12-10 21:02:54,066 [INFO] app.routes - Authentication success for user user1@email.com from 127.0.0.1
+2025-12-10 21:02:54,159 [WARNING] app - 404 Not Found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-12-10 21:02:57,128 [WARNING] app.routes - Access control: role 'admin' required for /admin-panel (have 'user')
+2025-12-10 21:02:57,129 [WARNING] app - 403 Forbidden: 403 Forbidden: You don't have the permission to access the requested resource. It is either read-protected or not readable by the server.
+2025-12-10 21:04:37,830 [WARNING] app - 404 Not Found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-12-10 21:04:40,726 [WARNING] app - 404 Not Found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-12-10 21:04:42,497 [INFO] app.routes - Authentication success for user user1@email.com from 127.0.0.1
+2025-12-10 21:04:42,585 [WARNING] app - 404 Not Found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-12-10 21:04:44,026 [WARNING] app.routes - Access control: role 'admin' required for /admin-panel (have 'user')
+2025-12-10 21:04:44,027 [WARNING] app - 403 Forbidden: 403 Forbidden: You don't have the permission to access the requested resource. It is either read-protected or not readable by the server.
+2025-12-10 21:04:44,054 [WARNING] app - 404 Not Found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-12-10 21:05:12,481 [WARNING] app - 404 Not Found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-12-10 21:05:37,923 [INFO] app.routes - Authentication success for user admin1@email.com from 127.0.0.1
+2025-12-10 21:05:37,977 [WARNING] app - 404 Not Found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-12-10 21:05:41,582 [WARNING] app - 404 Not Found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-12-10 21:05:56,628 [WARNING] app - 404 Not Found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-12-10 21:06:19,776 [INFO] app.routes - Authentication success for user mod1@email.com from 127.0.0.1
+2025-12-10 21:06:19,817 [WARNING] app - 404 Not Found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-12-10 21:06:23,210 [WARNING] app.routes - Access control: role 'admin' required for /admin-panel (have 'moderator')
+2025-12-10 21:06:23,211 [WARNING] app - 403 Forbidden: 403 Forbidden: You don't have the permission to access the requested resource. It is either read-protected or not readable by the server.
+2025-12-10 21:06:23,237 [WARNING] app - 404 Not Found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
